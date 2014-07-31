@@ -3,7 +3,7 @@
 <head>
 
 <meta name="color:Background" content="#fff" />
-<meta name="font:Body" content="Century Gothic" />
+<meta name="font:Body" content="News Gothic" />
 <meta name="image:Background" content=" " />
 
 <title>{Title}{block:PostSummary}, {PostSummary} {/block:PostSummary} 
@@ -13,19 +13,24 @@
 
 <link rel="shortcut icon" href="{Favicon}" />
 
+<meta name="text:Twitter username" content= " " />
+
 <meta name="color:Content" content="#fff8dc" />
-<meta name="color:Sidebar Title" content="#ff7900" />
+<meta name="color:Sidebar Title" content="#ff7800" />
 <meta name="color:Sidebar Link" content="#8b7765" />
 <meta name="color:Sidebar Hover" content="#8b7765" />
 
 <meta name="color:Primary Colour" content="#ff7800" />
 <meta name="color:Secondary Colour" content="#8b7765" />
-<meta name="image:Sidebar" content="" />
 
 <meta name="font:TitleFont" content="Streetscript" />
 <meta name="font:Sidebar Title" content="Streetscript" />
-<meta name="font:Sidebar Text" content="Century Gothic" />
-<meta name="font:Books" content="Century Gothic" />
+<meta name="font:Sidebar Text" content="News Gothic" />
+<meta name="font:Books" content="News Gothic" />
+
+<meta name="select:Avatar style" content="square" title="Square">
+<meta name="select:Avatar style" content="circle" title="Circle">
+<meta name="select:Avatar style" content="hidden" title="Hidden">
 
 <meta name="if:Infinite Scroll" content="0">
 
@@ -75,7 +80,7 @@ a {
     font-weight:bold;
     font-size:20px;
     font-family:{font:TitleFont};
-    color:#ff7800;
+    color:#000;
 }
     
 body {
@@ -83,10 +88,14 @@ body {
       background-repeat:repeat;
       background-color:{color:Background};
       background-image: url({image:Background});
-      font-family: {font:Body};
+      font-family:{font:Body};
       margin: 0;
       word-wrap: break-word;
 }
+
+    .circle img {
+        border-radius: 50%;
+    }
 
 #content {
      -moz-border-radius: 50px;
@@ -190,6 +199,14 @@ body {
                 opacity: 0.5;
             }
 
+h1, h2, h3, h4, h5 {
+            font-family: {font:Body};
+}
+
+    .hidden img {
+        display: none;
+    }
+
 hr.style-six {
     border:0;
     height:0;
@@ -264,7 +281,7 @@ img {
 
 #sidebar .description {
       color: #000;
-      font-size: 11px;
+      font-size: 14px;
       padding:10px;
       text-align:justify;
       line-height:100%;
@@ -308,8 +325,13 @@ img {
       color: #ffad64;
 }
 
+
+    .square img {
+        border-radius: 0;
+    }
+
 .tagged {
-    font-family: {font:Body};
+   font-family: 'Muli', sans-serif;
 }
 
 .text {
@@ -343,8 +365,9 @@ img {
 
 
 <div class="title">
-<img src="{PortraitURL-128} " />
-<br />
+    <header class="masthead {select:Avatar style}">
+        <img src="{PortraitURL-128}"/>
+    </header>
 <a href="/">{Title}</a>
 </div><!-- closes title div -->
 
@@ -352,7 +375,7 @@ img {
 
 <p class="text">
 <a href="/about">About</a> -
-<a href="http://www.twitter.com" target="_blank">Twitter</a> -
+<a href="http://www.twitter.com/{text:Twitter username}" target="_blank">Twitter</a> -
 <a href="/random">Random</a>
 </p>
 
