@@ -14,4 +14,6 @@ Roundedavatar.png has been included as a sample avatar.
 Also, if you are new to customizing Twitter themes, I would recommend that you make a backup of your existing Tumblr theme,
 before attempting to use this one.
 
+Tumblr user themesbyeris has a great tutorial on customizing your blog here: http://themesbyeris.tumblr.com/install.
+
 Enjoy!
