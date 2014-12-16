@@ -1,19 +1,26 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 
-<meta name="color:Background" content="#fff" />
-<meta name="font:Body" content="Century Gothic" />
-<meta name="image:Background" content=" " />
-
-<title>{Title}{block:PostSummary}, {PostSummary} {/block:PostSummary} 
+<title>
+{Title}{block:PostSummary}, {PostSummary} {/block:PostSummary} 
 </title>
-{block:Description}<meta name="description" content="{MetaDescription}" />
+
+{block:Description}
+<meta name="description" content="{MetaDescription}" />
 {/block:Description}
 
 <link rel="shortcut icon" href="{Favicon}" />
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+{block:Hidden}
+<meta name="color:Background" content="#fff" />
+<meta name="font:Body" content="Century Gothic" />
+<meta name="image:Background" content="http://static.tumblr.com/6db8rov/45pngoyis/subtle_dots.png" />
+
 
 <meta name="color:Content" content="#fff8dc" />
+
 <meta name="color:Sidebar Title" content="#ff7900" />
 <meta name="color:Sidebar Link" content="#8b7765" />
 <meta name="color:Sidebar Hover" content="#8b7765" />
@@ -24,13 +31,18 @@
 
 <meta name="font:TitleFont" content="Streetscript" />
 <meta name="font:Sidebar Title" content="Streetscript" />
+
 <meta name="font:Sidebar Text" content="Century Gothic" />
 <meta name="font:Books" content="Century Gothic" />
 
 <meta name="if:Infinite Scroll" content="0">
+<meta name="if:Show Header Image" content="0"/>
+{/block:Hidden}
 
 <style type="text/css">
     
+/* CSS for Luxe Theme */
+
 a {
     text-decoration:none;
 }
@@ -69,7 +81,6 @@ a {
     font-family: {font:TitleFont};
 }
 
-    
 .big {
     
     font-weight:bold;
@@ -95,6 +106,7 @@ body {
       margin: 60px 0 60px 460px;
       padding: 20px 0;
       color: black;
+
       position: absolute;
 }
 
@@ -157,8 +169,14 @@ body {
       font-size:11px;
 }
 
+#content #posts #notesandco .permalink {
+    font-family: {font:TitleFont};
+    font-size:18px;
+}
+
 /* Footer */
             #footer {
+
                 font-family: {font:TitleFont};
                 color:{color:Primary Colour};
                 margin:           20px 0px 0px 0px;
@@ -175,21 +193,40 @@ body {
                 text-decoration:  underline;
             }
 
+
+
             #footer p.tiny {
                 margin:           50px 0px 0px 0px;
                 font-size:        16px;
             }
+
             
             #footer p.tiny a {
+
                 text-decoration:  underline;
                 color:            #000000;
             }
+
+
             
             #footer p.tiny .dim {
                 filter: alpha(opacity=50); 
                 -moz-opacity: 0.5; 
                 opacity: 0.5;
+
+
+
             }
+
+#header {
+      width: 560px;
+      height: auto;
+      text-align:center;
+      position: relative;
+      margin-left:auto;
+      margin-right:auto;
+      margin-top:5%;
+}
 
 hr.style-six {
     border:0;
@@ -200,14 +237,10 @@ hr.style-six {
 }
   
 
+
 img {
       border: 0;
       max-width: 100%;
-}
-
-#content #posts #notesandco .permalink {
-    font-family: {font:TitleFont};
-    font-size:18px;
 }
 
 .phototitle {
@@ -252,6 +285,8 @@ img {
       position: absolute;
       top: 150px;
       left: 100px;
+
+
 }
 
 #sidebar a {
@@ -260,10 +295,12 @@ img {
 
 #sidebar a:hover {
       color: #ffad64;
+
 }
 
 #sidebar .description {
       color: #000;
+
       font-size: 11px;
       padding:10px;
       text-align:justify;
@@ -306,7 +343,9 @@ img {
 
 #sidebar .title a:hover {
       color: #ffad64;
+
 }
+
 
 .tagged {
     font-family: {font:Body};
@@ -326,8 +365,12 @@ img {
      margin: auto;
      position: relative;
 }
-    
+
+/* Custom CSS */
+{CustomCSS}
+
 </style>
+
 
 {block:IfInfiniteScroll}
 <script type="text/javascript" src="http://codysherman.com/tools/infinite-scrolling/code"></script>
@@ -335,12 +378,23 @@ img {
 
 </head>
 
+
 <body>
 
 <div id="wrap">
 
+<div id="header">
+{block:IfShowHeaderImage}
+<img src="{image:Header Image}"/>
+{/block:IfShowHeaderImage}
+
+{block:IfNotShowHeaderImage}
+{/block:IfNotShowHeaderImage}
+
+</div><!-- closes header div -->
 
 <div id="sidebar">
+
 
 
 <div class="title">
@@ -349,7 +403,11 @@ img {
 <a href="/">{Title}</a>
 </div><!-- closes title div -->
 
+
+
+
 <div class="description">{Description}
+
 
 <p class="text">
 <a href="/about">About</a> -
@@ -358,7 +416,6 @@ img {
 </p>
 
 </div><!-- closes description div -->
-
 </div><!-- closes sidebar div -->
 
 <div id="content">
@@ -368,9 +425,8 @@ img {
 {block:Posts}
 <div id="posts">
 
-
 {block:Photo}
-{LinkOpenTag}<img src="{PhotoURL-500}" />{LinkCloseTag}
+{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}
 {block:Caption}<div class="text"><span class="phototitle">{Caption}
 </span></div>{/block:Caption}
 {/block:Photo}
@@ -461,7 +517,15 @@ img {
 </div><!-- closes posts div -->
 {/block:Posts}
 
+
+
+
+
+
 <div id="footer">
+
+theme: <a href="http://los-angeles-luxe.tumblr.com">luxe</a> by terrastrana
+
     {block:IfNotInfiniteScroll}  
 {block:Pagination}
 <div id="pagination">
@@ -474,16 +538,33 @@ img {
                   <span class="current_page">{PageNumber}</span>
             {/block:CurrentPage}
 
+
+
+
+
+
+
             {block:JumpPage}
                   <a class="jump_page" href="{URL}">{PageNumber}</a>
             {/block:JumpPage}
       {/block:JumpPagination}
 
+
+
+
+
+
+
+
+
       {block:NextPage}
       
             <a href="{NextPage}"> &#187;</a>
       {/block:NextPage}
+
+
 </div><!-- closes pagination div -->
+
 {/block:Pagination}
 {/block:IfNotInfiniteScroll}
 
@@ -499,10 +580,14 @@ img {
 
 </div><!-- closes auto_pagerize div -->
 
+
 </div><!-- closes content div -->
+
+
 
 </div><!-- closes wrap div -->
     
+
 </body>
 
 </html>
